@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- MainActivity -->
+    <string name="app_name">tinytwit</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+
+    <!-- Missatges -->
+    <string name="errorConnexio">Error al connectar, comprova la connexió.</string>
+
+    <!-- Tweet -->
+    <string name="title_activity_tweet">Tweet</string>
+    <string name="tweet">Contingut tweet</string>
+    <string name="cancel">Cancel·la</string>
+    <string name="publish">Tweet!</string>
+    <string name="title_activity_show_tweet">ShowTweet</string>
+
+    <!-- ShowTweet -->
+    <string name="fav">Favorits</string>
+
+    <!-- Menú -->
+    <string name="menu_refresh">Actualitza</string>
+    <string name="menu_tweet">Tweet!</string>
+
+    <!-- Drawable -->
+    <drawable name="actionbar_background">#55acee</drawable>
+
+    <string name="title_userfeed_list">Items</string>
+    <string name="title_userfeed_detail">UserFeed Detail</string>
+
+</resources>
