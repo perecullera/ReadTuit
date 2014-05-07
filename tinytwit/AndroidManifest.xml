@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <!-- La actionbar surt a partir d'android 11, si volem compatibilitat amb versions anteriors mirar ActionBar Sherlock o la llibreria de compatibilitat-->
+    <!-- La actionbar surt a partir d'android 11, si volem compatibilitat amb versions anteriors mirar ActionBar Sherlock o la llibreria de compatibilitat -->
     <uses-sdk
         android:minSdkVersion="11"
         android:targetSdkVersion="19" />
@@ -24,12 +24,15 @@
             android:launchMode="singleInstance" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-             <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tinytwit" />
             </intent-filter>
         </activity>
@@ -40,6 +43,10 @@
         <activity
             android:name="com.ioc.tinytwit.ShowTweet"
             android:label="@string/title_activity_show_tweet" >
+        </activity>
+        <activity
+            android:name="com.ioc.tinytwit.ReadTweet"
+            android:label="@string/title_activity_read_tweet" >
         </activity>
     </application>
 

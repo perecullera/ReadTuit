@@ -2,7 +2,7 @@
 <resources>
 
     <!-- MainActivity -->
-    <string name="app_name">tinytwit</string>
+    <string name="app_name">ReadTuit</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>
 
@@ -28,5 +28,8 @@
 
     <string name="title_userfeed_list">Items</string>
     <string name="title_userfeed_detail">UserFeed Detail</string>
+    <string name="title_activity_read_tweet">Llegeix Tweets</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>
