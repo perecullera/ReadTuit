@@ -28,5 +28,10 @@
         android:icon="@drawable/ic_action_new_event"
         android:showAsAction="ifRoom"
         android:title="@string/menu_tweet"/>
+    <item 
+        android:id="@+id/action_read" 
+        android:title="@string/title_activity_read_tweet" 
+        android:icon="@drawable/ic_action_volume_on" 
+        android:showAsAction="ifRoom"></item>
 
 </menu>

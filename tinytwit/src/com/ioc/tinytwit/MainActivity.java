@@ -2,6 +2,7 @@ package com.ioc.tinytwit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import twitter4j.Paging;
 import twitter4j.ResponseList;
@@ -22,6 +23,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -38,11 +41,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener,
-		OnItemClickListener {
+		OnItemClickListener, OnInitListener {
 
 	// Constants personals, modifiqueu per les vostres dades!
-	protected static final String TWITTER_API_KEY = "XXXXXXXXXXXXXXXXXXXXXXx";
-	protected static final String TWITTER_API_SECRET = "YYYYYYYYYYYYYYYYYYYYYYY";
+	protected static final String TWITTER_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxx";
+	protected static final String TWITTER_API_SECRET = "yyyyyyyyyyyyyyyyyyyyyyyyy";
 
 	// Constants
 	protected static final String CALLBACK = "tinytwit:///";
@@ -54,7 +57,7 @@ public class MainActivity extends Activity implements OnClickListener,
 	// Twitter variables
 	private Twitter twitter;
 	private TwitterFactory factory;
-	private List<String> tweetString;
+	static List<String> tweetString;
 	private RequestToken rqToken;
 	private AccessToken accessToken;
 
@@ -70,12 +73,25 @@ public class MainActivity extends Activity implements OnClickListener,
 	private boolean menuVisibility;
 	protected static ConnectivityManager connMgr;
 	private DBInterface db;
+	
+	// tts
+	private int result=0;
+	TextToSpeech tts;
+	int isPlaying = 0;
+	ReadTuit Rt;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-
+		
+		Rt = new ReadTuit(this,this);
+		
+			/*tts = new TextToSpeech(this, this);
+			tts.setLanguage(Locale.ITALIAN);
+			tts.speak("Text to say aloud", TextToSpeech.QUEUE_ADD, null);
+			 */
+		
 		// Inicialitzem el connectivity manager.
 		connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -158,9 +174,11 @@ public class MainActivity extends Activity implements OnClickListener,
 		// Agafem els MenuItem
 		MenuItem refresh = menu.findItem(R.id.action_refresh);
 		MenuItem post = menu.findItem(R.id.action_post);
-
+		MenuItem read = menu.findItem(R.id.action_read);
+		
 		// S'han de veure els elements del menú?
 		refresh.setVisible(menuVisibility);
+		post.setVisible(menuVisibility);
 		post.setVisible(menuVisibility);
 
 		return super.onCreateOptionsMenu(menu);
@@ -185,6 +203,20 @@ public class MainActivity extends Activity implements OnClickListener,
 			Intent intent = new Intent(this, Tweet.class);
 			startActivity(intent);
 			return true;
+			
+		case R.id.action_read:
+			if (isPlaying == 0){
+				
+				Rt.onIn();
+				while (Rt.tts.isSpeaking()){
+					
+				}
+				isPlaying = 1;
+			}else if (isPlaying ==1){
+				Rt.tts.stop();
+				
+			}
+			
 
 		default:
 			return super.onOptionsItemSelected(item);
@@ -511,5 +543,48 @@ public class MainActivity extends Activity implements OnClickListener,
 		startActivity(intent);
 
 	}
+
+	@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	/*@Override
+	public void onInit(int status) {
+		// TODO Auto-generated method stub
+	    if (status == TextToSpeech.SUCCESS) {
+	        //set Language
+	        result = tts.setLanguage(Locale.US);
+	        // tts.setPitch(5); // set pitch level
+	        // tts.setSpeechRate(2); // set speech speed rate
+	        if (result == TextToSpeech.LANG_MISSING_DATA
+	                || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+	        } else {
+	            
+	            speakOut();
+	        }
+	    } else {
+	        Log.e("TTS", "Initilization Failed");
+	    }
+		
+	}
+	
+	private void speakOut() {
+		String text;
+		
+	    if(result!=tts.setLanguage(Locale.US))
+	    {
+	    Toast.makeText(getApplicationContext(), "Hi Please enter the right Words......  ", Toast.LENGTH_LONG).show();
+	    }else
+	    {
+	    	for (int i = 0; i< MainActivity.tweetString.size(); i++){
+	    		text = MainActivity.tweetString.get(i);
+	    		tts.speak(text, TextToSpeech.QUEUE_FLUSH, null);
+			}
+	    
+	    }
+		
+	}*/
 
 }
