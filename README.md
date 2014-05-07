@@ -12,5 +12,8 @@ It uses android own TTS library
 It stills in an early alpha version but you can give it a try at:
 
 [click here to download app] (http://perecullera.net/android/tinytwit.apk)
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/tweettospeech

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ioc.tinytwit"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- La actionbar surt a partir d'android 11, si volem compatibilitat amb versions anteriors mirar ActionBar Sherlock o la llibreria de compatibilitat-->
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <!-- Afegim permís per accedir a internet i per comprovar l'estat de la xarxa -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ioc.tinytwit.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleInstance" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tinytwit" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ioc.tinytwit.Tweet"
+            android:label="@string/title_activity_tweet" >
+        </activity>
+        <activity
+            android:name="com.ioc.tinytwit.ShowTweet"
+            android:label="@string/title_activity_show_tweet" >
+        </activity>
+    </application>
+
+</manifest>
