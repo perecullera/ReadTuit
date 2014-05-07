@@ -44,8 +44,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		OnItemClickListener, OnInitListener {
 
 	// Constants personals, modifiqueu per les vostres dades!
-	protected static final String TWITTER_API_KEY = "3osOY45EfHgAaM7ancZUlg";
-	protected static final String TWITTER_API_SECRET = "cNc5PDqKMU0SAF1RRHUUgpaJ5UNjv54AEl3v51ricoI";
+	protected static final String TWITTER_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxx";
+	protected static final String TWITTER_API_SECRET = "yyyyyyyyyyyyyyyyyyyyyyyyy";
 
 	// Constants
 	protected static final String CALLBACK = "tinytwit:///";
